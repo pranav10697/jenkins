@@ -8,13 +8,13 @@ pipeline {
         }
         stage('Build') {
             steps { 
-                 sh 'mvn clean package '
+                 sh '/opt/maven/bin/mvn clean package '
             }
         }
         stage('Test') {
             steps {
                 withSonarQubeEnv(installationName: 'sonar', credentialsId: 'sonar-creds') {
-                sh 'mvn sonar:sonar'
+                sh '/opt/maven/bin/mvn sonar:sonar'
                 }
             }
         } 
